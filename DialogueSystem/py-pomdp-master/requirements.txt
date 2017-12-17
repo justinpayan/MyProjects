@@ -1,0 +1,4 @@
+numpy
+pep8
+coverage
+python-coveralls

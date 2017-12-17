@@ -1,0 +1,4 @@
+1st st	first street
+prince ave	prince; prince avenue; prince ave; prince street
+lumpkin st	lumpkin; lumpkin street
+broad st	broad; broad street
