@@ -1,0 +1,84 @@
+//All of this code went with the SemWebLearn.java. I decided constructing the
+//entire co-occurrence matrix was too time-costly, because most of the 
+//thousands of words in the list would never be queried. Instead, "rows" of 
+//the matrix could just be calculated when needed by the query engine. 
+//In addition, I decided to use the LLR rather than simple co-occurrence.
+
+/*
+		Well, now it makes a word list. I need to create an association matrix. Easy, the dimensions are the size of the wordList.
+
+		Have the program search for the word. If it finds the word, look up the position of
+		each word in the paragraph in the wordList (since the words in the list are unique there will only be one position). Increment the
+		appropriate element of the matrix.
+
+		row for first word in the list: co-occurs with itself x times, co-occurs with the second word x times, etc
+		row for second word: blah
+		etc
+
+		*/
+
+		int[][] assocMat = new int[wordList.size()][wordList.size()];
+
+		//each "i" is a word
+		for (int i=0; i<wordList.size(); i++) {
+			
+			String currentWord = wordList.get(i);
+			
+			for (int j=0; j<wordWeb.size(); j++) {
+				if (wordWeb.get(j).contains(currentWord)) {
+					
+					ArrayList<String> miniWordList = new ArrayList<String>(); //will create a list of all the distinct words in this paragraph
+
+					for (int k=0; k<wordWeb.get(j).size(); k++) {
+						//only add words we don't already know
+						if (!miniWordList.contains(wordWeb.get(j).get(k))) {
+							miniWordList.add(wordWeb.get(j).get(k));
+							String word = miniWordList.get(miniWordList.size() - 1); //gets the word we just added
+							int index = wordList.indexOf(word); //calculate the index of the word in the initial long word list
+							assocMat[i][index]++; //increment that word's index in the row of the current word
+						}
+					}
+				}
+			}
+			
+		} //end of for loop that builds the co-occurrence matrix
+
+		
+	//prints out the word list, or part of it.
+						/*for (int i=0; i<wordList.size(); i++) {
+							System.out.println(wordList.get(i));
+						}*/
+	
+						//prints out the COM, or part of it if it's too big
+						int upLim = 0;
+						if (wordList.size() > 30)
+							upLim = 30;
+						else
+							upLim = wordList.size();
+						for (int i=0; i<upLim; i++) {
+							for (int j=0; j<upLim; j++) {
+								System.out.print(assocMat[i][j] + " ");
+							}
+							System.out.println();
+						}
+		
+
+		//write the matrix to a text file named whatever you want it named
+		Scanner userInput = new Scanner(System.in);
+		System.out.println("What you wanna call the co-occurrence matrix file?");
+		String name = userInput.nextLine();
+		File matFile = new File(name);
+
+		try {
+			FileWriter writer = new FileWriter(matFile);
+			for (int i=0; i<wordList.size(); i++) {
+				for (int j=0; j<wordList.size(); j++) {
+					writer.write(((Integer)assocMat[i][j]).toString() + "\n"); //writes each number as a string. take note of this for when reading it later. 
+				}
+			}
+			writer.close();
+		}
+		catch (IOException e) {
+			System.out.println("Something went wrong writing the association matrix to " + name);
+			e.printStackTrace();
+		}

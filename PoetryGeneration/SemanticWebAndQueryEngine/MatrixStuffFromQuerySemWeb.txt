@@ -1,0 +1,29 @@
+//There was some stuff up here about reading in the file appropriately
+
+//Now we wanna read in the matrix as a 2D array called assocMat
+		int[][] assocMat = new int[wordList.size()][wordList.size()];
+		try {
+			Scanner scanner = new Scanner(matFile);
+			for (int i=0; i<wordList.size(); i++) {
+				for (int j=0; j<wordList.size(); j++) {
+					assocMat[i][j] = Integer.parseInt(scanner.nextLine());
+				}
+			}
+		}
+		catch (Exception e) {
+			System.out.println("Something messed up reading the matrix file");
+		}
+
+//STUFF FOR DETERMINING ASSOCIATIONS
+
+int i = wordList.indexOf(lookup);
+			System.out.println("The related words are: \n\n");
+			for (int j=0; j<wordList.size(); j++) {
+				System.out.print(assocMat[i][j] + " ");
+			}
+
+			for (int j=0; j<wordList.size(); j++) {
+				if (assocMat[i][j] > 5) {
+					System.out.println(wordList.get(j));
+				}
+			}

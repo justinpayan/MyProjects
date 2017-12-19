@@ -1,0 +1,37 @@
+ArrayList<Integer> wheresWord = new ArrayList<Integer>();
+
+			//generate list of paragraphs (indices in the semantic web's array list) the word is in
+			for (int j=0; j<wordWeb.size(); j++) {
+				for (int k=0; k<wordWeb.get(j).size(); k++) {
+					if (wordWeb.get(j).get(k).equals(currentWord) && !wheresWord.contains((Integer)(j))) {
+						wheresWord.add((Integer)j);
+					}
+				}
+			}
+
+			//now we have a list of paragraphs containing the word. Go through each of the paragraphs and
+			//pick out each word. Find it in the word list. Add to COM.
+			for (int j=0; j<wheresWord.size(); j++) {
+				ArrayList<Integer> indicesIncrementedAlready = new ArrayList<Integer>();
+				ArrayList<String> currPara = wordWeb.get((int)wheresWord.get(j));
+				for (int k=0; k<currPara.size(); k++) {
+					
+					//find the word in the list and update co-occurrence matrix
+
+					//currently having the issue that if our current word is "word" and it's in a paragraph that has "is" 20 times, "is" will get plussed 20 times.
+					//Fixed the issue.
+			//System.out.println(currPara.get(k));
+					int index = wordList.indexOf(currPara.get(k));
+		//System.out.println(index);
+					if (!indicesIncrementedAlready.contains((Integer)index)) {
+						assocMat[i][index]++;
+						indicesIncrementedAlready.add(index);
+		//System.out.println(index);
+		//System.out.println("Incrementing");
+					}
+
+					/*while (currPara.indexOf(currPara.get(k)) != -1) {
+						currPara.remove(currPara.get(k));
+					}*/
+				}
+			}
