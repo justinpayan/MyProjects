@@ -1,0 +1,1249 @@
+help(??holdon)
+plot(set[[1]])
+plot3d(savedX, savedY, savedZ)
+plot3d(xVector, yVector, vectorOfDistances)
+sample(2)
+sample(40)
+a <- 1:20
+a
+sample(a)
+a <- matrix(1:20, 10)
+a
+sample(a)
+indices <- sample(10)
+indices
+convA <- matrix(1:20,10)
+convA
+for (n in 1:10) {}
+for (n in 1:10) {convA(n) <- a(indices(n))}
+a(1)
+a[1]
+for (n in 1:10) {convA[n] <- a[indices[n]]}
+convA
+for (n in 1:10) {convA[n] <- a[indices[n]]}
+a <- matrix(1:20, 10)#
+convA <- matrix(1:20, 10)#
+#
+for (n in 1:10) {#
+convA[n,1] <- a[indices[n],1]#
+convA[n,2] <- a[indices[n],2]#
+}
+a
+convA
+version
+library(rgl)
+#Bryce Derriso#
+#2/18/2015#
+#
+#makes 10 matrices with 50 random points each and returns them in a list#
+baseMatrices <- function(number=10, points=50){#
+a <- list()#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}#
+#
+#take a matrix x and perturb it, making n perturbed copies#
+perturb <- function(x, n=9,magnitude=100){#
+points <- length(x)/2 #assumes the matrix is 2xsome number of rows#
+a <- list(x)#
+#
+for(i in 1:n){#
+p <- matrix(rnorm(100)/magnitude, points)#
+a[[length(a)+1]] <- x+p#
+}#
+return(a)#
+}#
+#
+#takes a distance of each barcode in x from the barcode at index i#
+distance <- function(x, i){#
+a <- sapply(x, wasserstein, dimension=0, Diag2=x[[i]])#
+return(a)#
+}#
+#It was all function declarations until now#
+#Now we start to call functions and do TDA#
+maxdimensions=1; maxscale=5#
+m <- baseMatrices()#
+set <- sapply(m, perturb)#
+barcodes <- sapply(set,ripsDiag, maxdimensions, maxscale, library="GUDHI")#
+#
+A = matrix(ncol=100)#
+for(j in 1:length(barcodes)){B = distance(barcodes, j);A = rbind(A,B)}#
+#
+#Now make a 3D plot of the bottleneck distances (z-axis) with #
+#respect to the 2D coordinates <diag1, diag2>#
+#We expect to see clusters of 10 points that have low distances#
+#along the diagonal, and the rest to be very large distances#
+#generate a z-vector#
+actual <- A[2:101, 1:100]#
+vectorOfDistances <- as.vector(actual)#
+#
+#Just 100 1's, then 100 2's, etc up to 100 100's#
+xVector <- rep(1:100, each=100)#
+#
+#Just 1:100 repeated 100 times #
+yVector <- rep(1:100, 100)#
+#
+plot3d(xVector, yVector, vectorOfDistances)
+#Bryce Derriso#
+#2/18/2015#
+#
+library(TDA)#
+#
+#makes 10 matrices with 50 random points each and returns them in a list#
+baseMatrices <- function(number=10, points=50){#
+a <- list()#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}#
+#
+#take a matrix x and perturb it, making n perturbed copies#
+perturb <- function(x, n=9,magnitude=100){#
+points <- length(x)/2 #assumes the matrix is 2xsome number of rows#
+a <- list(x)#
+#
+for(i in 1:n){#
+p <- matrix(rnorm(100)/magnitude, points)#
+a[[length(a)+1]] <- x+p#
+}#
+return(a)#
+}#
+#
+#takes a distance of each barcode in x from the barcode at index i#
+distance <- function(x, i){#
+a <- sapply(x, wasserstein, dimension=0, Diag2=x[[i]])#
+return(a)#
+}#
+#It was all function declarations until now#
+#Now we start to call functions and do TDA#
+maxdimensions=1; maxscale=5#
+m <- baseMatrices()#
+set <- sapply(m, perturb)#
+barcodes <- sapply(set,ripsDiag, maxdimensions, maxscale, library="GUDHI")#
+#
+A = matrix(ncol=100)#
+for(j in 1:length(barcodes)){B = distance(barcodes, j);A = rbind(A,B)}#
+#
+#Now make a 3D plot of the bottleneck distances (z-axis) with #
+#respect to the 2D coordinates <diag1, diag2>#
+#We expect to see clusters of 10 points that have low distances#
+#along the diagonal, and the rest to be very large distances#
+#generate a z-vector#
+actual <- A[2:101, 1:100]#
+vectorOfDistances <- as.vector(actual)#
+#
+#Just 100 1's, then 100 2's, etc up to 100 100's#
+xVector <- rep(1:100, each=100)#
+#
+#Just 1:100 repeated 100 times #
+yVector <- rep(1:100, 100)#
+#
+plot3d(xVector, yVector, vectorOfDistances)
+plot(xVector, vectorOfDistances)
+plot(yVector, vectorOfDistances)
+#Bryce Derriso#
+#2/18/2015#
+#
+library(TDA)#
+#
+m <- matrix(rnorm(50),45)
+#Bryce Derriso#
+#2/18/2015#
+#
+library(TDA)#
+#
+m <- matrix(rnorm(50),50)
+m
+#Bryce Derriso#
+#2/18/2015#
+#
+library(TDA)#
+#
+m <- matrix(rnorm(50),25,2)
+m
+plot(m)
+#Bryce Derriso#
+#2/18/2015#
+#
+library(TDA)#
+#
+m <- matrix(rnorm(50),25,2)
+plot(m)
+m <- matrix(rnorm(100),50,2)
+plot(m)
+plot <- sapply(set,ripsDiag, maxdimensions, maxscale, library="GUDHI")
+plot
+plot(plot)
+m
+ripsDiag(m,1,1000)
+plot.diagram(ripsDiag(m,1,1000))
+diagram1 <- ripsDiag(m,1,1000)
+diagram1
+plot.diagram(diagram1)
+size(diagram1)
+help size
+diagram1.size
+dim(diagram1)
+nrow(diagram1)
+ncol(diagram1)
+plot(diagram1)
+diagram1
+type(diagram1)
+diagram1 <- ripsDiag(m,1,1000)$diagram
+diagram1
+plot(diagram1)
+plot(diagram1, barcode=true)
+plot(diagram1, barcode=TRUE)
+m <- matrix(randn(1000),ncol=2)
+m <- matrix(rnorm(1000),ncol=2)
+m
+plot(m)
+diagram1 <- ripsDiag(m,1,1000)$diagram
+plot(diagram1)
+plot(diagram1, barcode=TRUE)
+m <- matrix(rnorm(1000)*1000,ncol=2)
+plot(m)
+diagram1 <- ripsDiag(m,1,1000)$diagram
+plot(diagram1, barcode=TRUE)
+load("/Users/justinpayan/Downloads/b101t9i.RData")
+load("/Users/justinpayan/Downloads/b101t9i.RData")
+load("/Users/justinpayan/Downloads/b135t8i.RData")
+load("/Users/justinpayan/Downloads/NIST/g096t2i.RData")
+load("/Users/justinpayan/Downloads/NIST/b102l0i.RData")
+load("/Users/justinpayan/Downloads/NIST/b102l0m.RData")
+load("/Users/justinpayan/Downloads/NIST/u300t2i.RData")
+pwd
+getwd()
+setwd("/Users/justinpayan/Desktop/Spring2015/TopoDataAnalysis/")
+mydata = read.csv("output.csv")
+mydata
+plot(mydata)
+plot(mydata)
+diagram1 <- ripsDiag(myData,1,1000)$diagram
+diagram1 <- ripsDiag(mydata,1,1000)$diagram
+plot(diagram1)
+plot(diagram1, barcode=TRUE)
+diagram1
+for (k in diagram1) {}
+for (k in diagram1) {}
+for (k in diagram1) {1}
+x<- ones(50); for (k in diagram1) {ones(1) <- k}
+diagram1.dim
+dim(diagram1)
+dim(diagram1)(1)
+dim(diagram1)[1]
+diagram1[1]
+diagram1[1,1]
+diagram1[1,2]
+diagram1[2,2]
+diagram1[2,1]
+0 ==0
+featureVect <- rnorm(100)#
+#
+for (j in 1:100) {#
+	count <- 0#
+#
+	for (k in 1:dim(diagram1)[1]) {#
+		if (diagram1[k,1] == 0) {#
+			if (diagram1[k,2] < 10*j) {#
+				if (diagram1[k,3] > 10*j-1) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+	}#
+#
+	featureVect[j] <- count#
+}
+featureVect
+featureVect <- rnorm(200)#
+#
+for (j in 1:100) {#
+	count <- 0#
+#
+	for (k in 1:dim(diagram1)[1]) {#
+		if (diagram1[k,1] == 0) {#
+			if (diagram1[k,2] < 10*j) {#
+				if (diagram1[k,3] > 10*j-1) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+	}#
+#
+	featureVect[j] <- count#
+}#
+#
+for (j in 1:100) {#
+	count <- 0#
+#
+	for (k in 1:dim(diagram1)[1]) {#
+		if (diagram1[k,1] == 1) {#
+			if (diagram1[k,2] < 10*j) {#
+				if (diagram1[k,3] > 10*j-1) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+	}#
+#
+	featureVect[j+100] <- count#
+}
+featureVect
+featureVect <- rnorm(200)#
+#
+for (j in 1:100) {#
+	count <- 0#
+#
+	for (k in 1:dim(diagram1)[1]) {#
+		if (diagram1[k,1] == 0) {#
+			if (diagram1[k,2] < 10*j) {#
+				if (diagram1[k,3] > 10*j-1) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+	}#
+#
+	featureVect[j] <- count#
+}#
+#
+for (j in 1:100) {#
+	count <- 0#
+#
+	for (k in 1:dim(diagram1)[1]) {#
+		if (diagram1[k,1] == 1) {#
+			if (diagram1[k,2] < 10*j) {#
+				if (diagram1[k,3] > 10*j-1) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+	}#
+#
+	featureVect[j+100] <- count#
+}#
+#
+featureVect/dim(diagram1)[1]
+featureVect <- rnorm(200)#
+#
+for (j in 1:100) {#
+	count <- 0#
+#
+	for (k in 1:dim(diagram1)[1]) {#
+		if (diagram1[k,1] == 0) {#
+			if (diagram1[k,2] < 10*j) {#
+				if (diagram1[k,3] > 10*j-1) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+	}#
+#
+	featureVect[j] <- count#
+}#
+#
+for (j in 1:100) {#
+	count <- 0#
+#
+	for (k in 1:dim(diagram1)[1]) {#
+		if (diagram1[k,1] == 1) {#
+			if (diagram1[k,2] < 10*j) {#
+				if (diagram1[k,3] > 10*j-1) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+	}#
+#
+	featureVect[j+100] <- count#
+}#
+#
+featureVect <- featureVect/dim(diagram1)[1]
+featureVect
+plot(1:200, featureVect)
+plot(diagram1)
+featureVect <- rnorm(200)#
+#
+for (j in 1:100) {#
+	count <- 0#
+#
+	for (k in 1:dim(diagram1)[1]) {#
+		if (diagram1[k,1] == 0) {#
+			if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+				count <- count + 1#
+			}#
+		}#
+	}#
+#
+	featureVect[j] <- count#
+}#
+#
+for (j in 1:100) {#
+	count <- 0#
+#
+	for (k in 1:dim(diagram1)[1]) {#
+		if (diagram1[k,1] == 1) {#
+			if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+				count <- count + 1#
+			}#
+		}#
+	}#
+#
+	featureVect[j+100] <- count#
+}#
+#
+featureVect <- featureVect/dim(diagram1)[1]
+featureVect
+plot(1:200,featureVect)
+getwd()
+setwd("outputData")
+getwd()
+for (i in 1:10) {#
+	file <- read.csv("output" + i + ".csv")#
+#
+	file[1]#
+}
+list.files()
+files <- list.files()#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	currFile[1]#
+}
+files <- list.files()#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	currFile[1]#
+}
+end
+1
+files <- list.files()#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	currFile[1]#
+})
+featureMat <- matrix(rnorm(516*200), 516)
+featureMat
+dim(featureMat)
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, :] <- featureVect#
+	counter <- counter + 1#
+})
+counter <- 1
+featureVect
+featureMat[1] <- featureVect
+featureMat(1)
+featureMat
+featureMat{1]
+featureMat[1]
+featureMat[1,:]
+featureMat[1:200]
+featureMat[1:200] <- featureVect
+featureMat[1:200]
+featureMat[190:200]
+featureMat[1,]
+featureMat[1,1]
+featureMat[1,2]
+featureMat[1,] <- featureVect
+featureMat[1,2]
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, ] <- featureVect#
+	counter <- counter + 1#
+})
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, ] <- featureVect#
+	counter <- counter + 1#
+})
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- null#
+	diagram1 <- ripsDiag(currFile,1,1000)#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, ] <- featureVect#
+	counter <- counter + 1#
+})
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, ] <- featureVect#
+	counter <- counter + 1#
+})
+diagram1
+options(error=recover)
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, ] <- featureVect#
+	counter <- counter + 1#
+})
+debug(#
+#
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, ] <- featureVect#
+	counter <- counter + 1#
+})#
+)
+setwd("/Desktop/Spring2015/TopoDataAnalysis")
+options(error=NULL)
+setwd("/Desktop/Spring2015/TopoDataAnalysis")
+setwd("/..")
+setwd("/Users/justinpayan/Desktop/Spring2015/TopoDataAnalysis/")
+ls
+FeatureExtraction
+FeatureExtraction.R
+FeatureExtraction
+sayHello <- function(){#
+   print('hello')#
+}#
+#
+sayHello()
+FeatureExtraction()
+load("FeatureExtraction.R")
+FeatureExtraction.R()
+getwd()
+source("FeatureExtraction.txt")
+source("FeatureExtraction.r")
+source("featureExtraction.r")
+source('featureExtraction.r')
+featureExtraction
+featureExtraction()
+featureExtraction.r
+featureExtraction.r()
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, ] <- featureVect#
+	counter <- counter + 1#
+})
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, ] <- featureVect#
+	counter <- counter + 1#
+})
+setwd("outputData/")
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, ] <- featureVect#
+	counter <- counter + 1#
+})
+files <- list.files()
+files[1]
+files[0]
+files[2]
+files[516]
+files[517]
+files[518]
+files[20000]
+files <- listFiles
+files <- listFiles()
+files <- listfiles()
+files <- list.files()
+files[517]
+files[516]
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, ] <- featureVect#
+	counter <- counter + 1#
+})
+currFile <- read.csv(files[1])
+currFile
+diagram1 <- ripsDiag(currFile,1,1000)
+plot(diagram1)
+diagram.plot(diagram1)
+diagram1
+plot(diagram1, barcode = TRUE)
+plot.diagram(diagram1)
+diagram1
+plot.diagram(diagram1,barcode = TRUE)
+diagram1
+diagram1 <- ripsDiag(currFile,1,1000)$diagram
+plot.diagram(diagram1)
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)$diagram#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, ] <- featureVect#
+	counter <- counter + 1#
+})
+featureMat[1,]
+setwd(/Users/justinpayan)
+setwd(""/Users/justinpayan/Desktop")
+""
+setwd("/Users/justinpayan/Desktop/Spring2015/TopoDataAnalysis/")
+list.files()
+setwd("testRScript/")
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)$diagram#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, ] <- featureVect#
+	counter <- counter + 1#
+})
+featureMat[1,]
+plot(1:200, featureMat[1,])
+plot(1:200, featureMat[516,])
+plot(1:200, featureMat[2,])
+plot(1:200, featureMat[3,])
+files <- list.files()#
+> featureMat <- matrix(rnorm(516*200), 516)#
+> counter <- 1
+files <- list.files()#
+> featureMat <- matrix(rnorm(516*200), 516)counter <- 1
+files <- list.files()
+featureMat <- matrix(rnorm(516*200), 516)
+counter <- 1
+counter
+featureMat
+currFile <- read.csv(files[1])#
+	diagram1 <- ripsDiag(currFile,1,1000)$diagram#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]
+featureVect
+featureMat[counter,] <- featureVect
+featureMat[1]
+featureMat[1,]
+counter <- counter + 1
+counter
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)$diagram#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, ] <- featureVect#
+	counter <- counter + 1#
+})
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)$diagram#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	featureMat[counter, ] <- featureVect#
+	counter <- counter + 1#
+})
+featureMat[1,]
+featureMat[2,]
+featureMat[3,]
+featureVect
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+featureMat <- lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)$diagram#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	return(featureVect)#
+})
+exit

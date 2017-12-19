@@ -1,0 +1,1040 @@
+library(TDA)
+library(phom)
+location(phom)
+install.packages('TDA',repos="http://cran.r-project.org/")
+help(INSTALL)
+install.packages('TDA',repos="http://cran.r-project.org/bin/macosx/mavericks/contrib/3.1/TDA_1.3.tgz")
+install.packages('TDA',repos="http://cran.r-project.org/bin/macosx/mavericks/contrib/3.1")
+pwd
+installed.packages
+installed.packages()
+m <- [1, 2; 3, 4]
+m <- 1, 2; 3, 4
+m <- 1 2; 3 4
+m <- matrix()
+m
+m[1,1] <- 1
+m
+m[1,2] <- 2
+m <- matrix(1:4,2)
+m
+solve(m)
+m
+solve(m)*m
+solve(m)%*%m
+listM <- list(m)
+listM
+c(listM, m)
+listM[[2]] <- m
+listM
+apply(listM, 1, solve)
+help(dimension)
+help(dim)
+dim(listM)
+lapply(listM, 1, solve)
+lapply(listM,solve)
+m
+listM
+unlist(listM)
+listM
+unlist(listM[1])
+matrix(unlist(listM[1]),2)
+distMat <- matrix(NULL, 100, 100)
+distMat <- matrix(1:10000, 100, 100)
+distMat
+dim(distMat)
+distMat(1,1)
+distMat[1,1]
+distMat[1,50]
+distMat[34,50]
+listM
+matrix(unlist(listM[1]),2)
+library(phom)
+matrix(rnorm(100),50)
+m <- matrix(rnorm(100),50)
+m
+phom(m)
+help(phom)
+max_dim <- 2#
+max_f <- 0.2#
+#
+intervals <- pHom(m, max_dim, max_f, metric="manhattan")
+intervals
+install.packages(TDA)
+install.packages("TDA")
+install.packages("/private/var/folders/dk/734bdvt96ns4445_6zncl6dw0000gn/T/RtmpPRbQsi/downloaded_packages", repos = NULL, type = "source")
+install.packages("/private/var/folders/dk/734bdvt96ns4445_6zncl6dw0000gn/T/RtmpPRbQsi/downloaded_packages/TDA_1.3.tar.gz", repos = NULL, type = "source")
+install.packages("/Users/justinpayan/Downloads/TDA", repos = NULL, type = "source")
+library(TDA)
+m <- matrix(rnorm(100), 50)#
+> f <- matrix(rnorm(100)/100, 50)#
+> f2 <- matrix(rnorm(100)/100, 50)#
+> p1 <- matrix(rnorm(100)/100, 50)#
+> p2 <- matrix(rnorm(100)/100, 50)#
+> f1 = m+p1#
+> f2 = m+p2#
+> maxdimensions=1; maxscale=5#
+> diag1=ripsDiag(X=f1, maxdimensions, maxscale, library="GUDHI", printProgress=FALSE)$diagram
+m <- matrix(rnorm(100), 50)#
+f <- matrix(rnorm(100)/100, 50)#
+f2 <- matrix(rnorm(100)/100, 50)#
+p1 <- matrix(rnorm(100)/100, 50)#
+p2 <- matrix(rnorm(100)/100, 50)#
+f1 = m+p1#
+f2 = m+p2 maxdimensions=1; maxscale=5#
+> diag1=ripsDiag(X=f1, maxdimensions, maxscale, library="GUDHI", printProgress=FALSE)$diagram
+m <- matrix(rnorm(100), 50)#
+f <- matrix(rnorm(100)/100, 50)#
+f2 <- matrix(rnorm(100)/100, 50)#
+p1 <- matrix(rnorm(100)/100, 50)#
+p2 <- matrix(rnorm(100)/100, 50)#
+f1 = m+p1#
+f2 = m+p2 maxdimensions=1; maxscale=5#
+#
+diag1=ripsDiag(X=f1, maxdimensions, maxscale, library="GUDHI", printProgress=FALSE)$diagram
+m <- matrix(rnorm(100), 50)#
+f <- matrix(rnorm(100)/100, 50)#
+f2 <- matrix(rnorm(100)/100, 50)#
+p1 <- matrix(rnorm(100)/100, 50)#
+p2 <- matrix(rnorm(100)/100, 50)#
+f1 <- m+p1#
+f2 <- m+p2 maxdimensions=1; maxscale=5#
+#
+diag1 <- ripsDiag(X=f1, maxdimensions, maxscale, library="GUDHI", printProgress=FALSE)$diagram
+m <- matrix(rnorm(100), 50)#
+f <- matrix(rnorm(100)/100, 50)#
+f2 <- matrix(rnorm(100)/100, 50)#
+p1 <- matrix(rnorm(100)/100, 50)#
+p2 <- matrix(rnorm(100)/100, 50)#
+f1 <- m+p1#
+f2 <- m+p2 #
+maxdimensions=1; maxscale=5#
+diag1 <- ripsDiag(X=f1, maxdimensions, maxscale, library="GUDHI", printProgress=FALSE)$diagram
+m <- matrix(rnorm(100), 50)#
+f <- matrix(rnorm(100)/100, 50)#
+f2 <- matrix(rnorm(100)/100, 50)#
+p1 <- matrix(rnorm(100)/100, 50)#
+p2 <- matrix(rnorm(100)/100, 50)#
+f1 <- m+p1#
+f2 <- m+p2 #
+maxdimensions=1; maxscale=5#
+diag1 <- ripsDiag(X=f1, maxdimensions, maxscale, library="GUDHI", printProgress=TRUE)$diagram
+plotDiag(diag1)
+plot.diagram(diag1)
+diag1
+baseMatrices <- function(number=10, points=50){#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}
+baseMatrices()
+baseMatrices <- function(number=10, points=50){#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}
+baseMatrices <- function(number=10, points=50){#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a <- list()#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}
+baseMatrices()
+#makes 10 matrices with 50 random points each and returns them in a list#
+baseMatrices <- function(number=10, points=50){#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a <- list()#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}#
+#
+#take a matrix x and perturb it, making n perturbed copies#
+perturb <- function(x, n=9,magnitude=100){#
+points <- length(x)/2 #assumes the matrix is 2xsome number of rows#
+a <- list(x)#
+#
+for(i in 1:n){#
+p <- matrix(rnorm(100)/magnitude, points)#
+a[[length(a)+1]] <- x+p#
+}#
+return(a)#
+}
+m <- baseMatrices()
+m
+m <- list()
+m
+m <- baseMatrices()
+m
+m <- baseMatrices(10, 50)
+m
+#makes 10 matrices with 50 random points each and returns them in a list#
+baseMatrices <- function(number=10, points=50){#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a <- list()#
+a[length(a)+1] <- m#
+}#
+return(a)#
+}#
+#
+#take a matrix x and perturb it, making n perturbed copies#
+perturb <- function(x, n=9,magnitude=100){#
+points <- length(x)/2 #assumes the matrix is 2xsome number of rows#
+a <- list(x)#
+#
+for(i in 1:n){#
+p <- matrix(rnorm(100)/magnitude, points)#
+a[[length(a)+1]] <- x+p#
+}#
+return(a)#
+}
+m <- baseMatrices(10, 50)
+#makes 10 matrices with 50 random points each and returns them in a list#
+baseMatrices <- function(number=10, points=50){#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a <- list()#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}#
+#
+#take a matrix x and perturb it, making n perturbed copies#
+perturb <- function(x, n=9,magnitude=100){#
+points <- length(x)/2 #assumes the matrix is 2xsome number of rows#
+a <- list(x)#
+#
+for(i in 1:n){#
+p <- matrix(rnorm(100)/magnitude, points)#
+a[[length(a)+1]] <- x+p#
+}#
+return(a)#
+}
+m <- baseMatrices(10, 50)
+m
+length(a)
+#makes 10 matrices with 50 random points each and returns them in a list#
+baseMatrices <- function(number=10, points=50){#
+a <- list()#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}
+m <- baseMatrices(10, 50)
+m
+for (n in 1:10) {}
+for (n in 1:10) {plot(m[[n]])}
+plot(m[[1]])
+plot(m[[2]])
+plot(m[[5]])
+perturb <- function(x, n=9,magnitude=100){#
+points <- length(x)/2 #assumes the matrix is 2xsome number of rows#
+a <- list(x)#
+#
+for(i in 1:n){#
+p <- matrix(rnorm(100)/magnitude, points)#
+a[[length(a)+1]] <- x+p#
+}#
+return(a)#
+}
+perturb(m[[1]])
+dim(m)
+m
+length(m)
+lapply(m, perturb)
+distance <- function(x, i){#
+a <- sapply(x, wasserstein, dimension=0, Diag2=x[[i]])#
+return(a)#
+}
+maxdimensions=1; maxscale=5#
+m <- baseMatrices()#
+set <- sapply(m, perturb)#
+diagrams <- sapply(set,ripsDiag, maxdimensions, maxscale, library="GUDHI")
+diagrams
+length(diagrams)
+#Bryce Derriso#
+#2/18/2015#
+#
+#makes 10 matrices with 50 random points each and returns them in a list#
+baseMatrices <- function(number=10, points=50){#
+a <- list()#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}#
+#
+#take a matrix x and perturb it, making n perturbed copies#
+perturb <- function(x, n=9,magnitude=100){#
+points <- length(x)/2 #assumes the matrix is 2xsome number of rows#
+a <- list(x)#
+#
+for(i in 1:n){#
+p <- matrix(rnorm(100)/magnitude, points)#
+a[[length(a)+1]] <- x+p#
+}#
+return(a)#
+}#
+#
+#takes a distance of each barcode in x from the barcode at index i#
+distance <- function(x, i){#
+a <- sapply(x, bottleneck, dimension=0, Diag2=x[[i]])#
+return(a)#
+}#
+#It was all function declarations until now#
+#Now we start to call functions and do TDA#
+maxdimensions=1; maxscale=5#
+m <- baseMatrices()#
+set <- sapply(m, perturb)#
+diagrams <- sapply(set,ripsDiag, maxdimensions, maxscale, library="GUDHI")#
+#
+A = matrix(ncol=100)#
+for(j in 1:length(barcodes)){B = distance(barcodes, j);A = rbind(A,B)}
+#Bryce Derriso#
+#2/18/2015#
+#
+#makes 10 matrices with 50 random points each and returns them in a list#
+baseMatrices <- function(number=10, points=50){#
+a <- list()#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}#
+#
+#take a matrix x and perturb it, making n perturbed copies#
+perturb <- function(x, n=9,magnitude=100){#
+points <- length(x)/2 #assumes the matrix is 2xsome number of rows#
+a <- list(x)#
+#
+for(i in 1:n){#
+p <- matrix(rnorm(100)/magnitude, points)#
+a[[length(a)+1]] <- x+p#
+}#
+return(a)#
+}#
+#
+#takes a distance of each barcode in x from the barcode at index i#
+distance <- function(x, i){#
+a <- sapply(x, bottleneck, dimension=0, Diag2=x[[i]])#
+return(a)#
+}#
+#It was all function declarations until now#
+#Now we start to call functions and do TDA#
+maxdimensions=1; maxscale=5#
+m <- baseMatrices()#
+set <- sapply(m, perturb)#
+barcodes <- sapply(set,ripsDiag, maxdimensions, maxscale, library="GUDHI")#
+#
+A = matrix(ncol=100)#
+for(j in 1:length(barcodes)){B = distance(barcodes, j);A = rbind(A,B)}
+A
+dim(A)
+package(rgl)
+library(rgl)
+A
+A[1]
+A[2]
+A[3]
+A[2,1]
+A[2,2]
+A[1,1]
+actual <- A[2:101, 1:100]
+actual
+dim(actual)
+as.vector(actual)
+dim(as.vector(actual))
+vectAct <- as.vector(actual)
+vectAct
+length(vectAct)
+xVect <- 1:100
+xVect
+rep(xVect, 100)
+yVector <- 1:100
+rep(yVector, 100)
+yVector
+xVector <- yVector
+xVector
+rep.int(xVector, 100)
+rep(xVector,each=100)
+#generate a z-vector#
+actual <- A[2:101, 1:100]#
+vectorOfDistances <- as.vector(actual)#
+#
+#Just 100 1's, then 100 2's, etc up to 100 100's#
+xVector <- rep(1:100, each=100)#
+#
+#Just 1:100 repeated 100 times #
+yVector <- rep(1:100, 100)
+vectorOfDistances
+xVector
+yVector
+plot3D(xVector, yVector, vectorOfDistances)
+library(rsl)
+library(rgl)
+plot3D(xVector, yVector, vectorOfDistances)
+plot3d(xVector, yVector, vectorOfDistances)
+library(rgl)
+#Bryce Derriso#
+#2/18/2015#
+#
+#makes 10 matrices with 50 random points each and returns them in a list#
+baseMatrices <- function(number=10, points=50){#
+a <- list()#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}#
+#
+#take a matrix x and perturb it, making n perturbed copies#
+perturb <- function(x, n=9,magnitude=100){#
+points <- length(x)/2 #assumes the matrix is 2xsome number of rows#
+a <- list(x)#
+#
+for(i in 1:n){#
+p <- matrix(rnorm(100)/magnitude, points)#
+a[[length(a)+1]] <- x+p#
+}#
+return(a)#
+}#
+#
+#takes a distance of each barcode in x from the barcode at index i#
+distance <- function(x, i){#
+a <- sapply(x, wasserstein, dimension=0, Diag2=x[[i]])#
+return(a)#
+}#
+#It was all function declarations until now#
+#Now we start to call functions and do TDA#
+maxdimensions=1; maxscale=5#
+m <- baseMatrices()#
+set <- sapply(m, perturb)#
+barcodes <- sapply(set,ripsDiag, maxdimensions, maxscale, library="GUDHI")#
+#
+A = matrix(ncol=100)#
+for(j in 1:length(barcodes)){B = distance(barcodes, j);A = rbind(A,B)}#
+#
+#Now make a 3D plot of the bottleneck distances (z-axis) with #
+#respect to the 2D coordinates <diag1, diag2>#
+#We expect to see clusters of 10 points that have low distances#
+#along the diagonal, and the rest to be very large distances#
+#generate a z-vector#
+actual <- A[2:101, 1:100]#
+vectorOfDistances <- as.vector(actual)#
+#
+#Just 100 1's, then 100 2's, etc up to 100 100's#
+xVector <- rep(1:100, each=100)#
+#
+#Just 1:100 repeated 100 times #
+yVector <- rep(1:100, 100)#
+#
+plot3d(xVector, yVector, vectorOfDistances)
+library(TDA)
+library(rgl)
+#Bryce Derriso#
+#2/18/2015#
+#
+#makes 10 matrices with 50 random points each and returns them in a list#
+baseMatrices <- function(number=10, points=50){#
+a <- list()#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}#
+#
+#take a matrix x and perturb it, making n perturbed copies#
+perturb <- function(x, n=9,magnitude=100){#
+points <- length(x)/2 #assumes the matrix is 2xsome number of rows#
+a <- list(x)#
+#
+for(i in 1:n){#
+p <- matrix(rnorm(100)/magnitude, points)#
+a[[length(a)+1]] <- x+p#
+}#
+return(a)#
+}#
+#
+#takes a distance of each barcode in x from the barcode at index i#
+distance <- function(x, i){#
+a <- sapply(x, wasserstein, dimension=0, Diag2=x[[i]])#
+return(a)#
+}#
+#It was all function declarations until now#
+#Now we start to call functions and do TDA#
+maxdimensions=1; maxscale=5#
+m <- baseMatrices()#
+set <- sapply(m, perturb)#
+barcodes <- sapply(set,ripsDiag, maxdimensions, maxscale, library="GUDHI")#
+#
+A = matrix(ncol=100)#
+for(j in 1:length(barcodes)){B = distance(barcodes, j);A = rbind(A,B)}#
+#
+#Now make a 3D plot of the bottleneck distances (z-axis) with #
+#respect to the 2D coordinates <diag1, diag2>#
+#We expect to see clusters of 10 points that have low distances#
+#along the diagonal, and the rest to be very large distances#
+#generate a z-vector#
+actual <- A[2:101, 1:100]#
+vectorOfDistances <- as.vector(actual)#
+#
+#Just 100 1's, then 100 2's, etc up to 100 100's#
+xVector <- rep(1:100, each=100)#
+#
+#Just 1:100 repeated 100 times #
+yVector <- rep(1:100, 100)#
+#
+plot3d(xVector, yVector, vectorOfDistances)
+savedX <- xVector
+savedY <- yVector
+savedZ <- vectorOfDistances
+#Bryce Derriso#
+#2/18/2015#
+#
+#makes 10 matrices with 50 random points each and returns them in a list#
+baseMatrices <- function(number=10, points=50){#
+a <- list()#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}#
+#
+#take a matrix x and perturb it, making n perturbed copies#
+perturb <- function(x, n=9,magnitude=100){#
+points <- length(x)/2 #assumes the matrix is 2xsome number of rows#
+a <- list(x)#
+#
+for(i in 1:n){#
+p <- matrix(rnorm(100)/magnitude, points)#
+a[[length(a)+1]] <- x+p#
+}#
+return(a)#
+}#
+#
+#takes a distance of each barcode in x from the barcode at index i#
+distance <- function(x, i){#
+a <- sapply(x, bottleneck, dimension=0, Diag2=x[[i]])#
+return(a)#
+}#
+#It was all function declarations until now#
+#Now we start to call functions and do TDA#
+maxdimensions=1; maxscale=5#
+m <- baseMatrices()#
+set <- sapply(m, perturb)#
+barcodes <- sapply(set,ripsDiag, maxdimensions, maxscale, library="GUDHI")#
+#
+A = matrix(ncol=100)#
+for(j in 1:length(barcodes)){B = distance(barcodes, j);A = rbind(A,B)}#
+#Now make a 3D plot of the bottleneck distances (z-axis) with #
+#respect to the 2D coordinates <diag1, diag2>#
+#We expect to see clusters of 10 points that have low distances#
+#along the diagonal, and the rest to be very large distances#
+#generate a z-vector#
+actual <- A[2:101, 1:100]#
+vectorOfDistances <- as.vector(actual)#
+#
+#Just 100 1's, then 100 2's, etc up to 100 100's#
+xVector <- rep(1:100, each=100)#
+#
+#Just 1:100 repeated 100 times #
+yVector <- rep(1:100, 100)#
+#
+plot3d(xVector, yVector, vectorOfDistances)
+m
+plot(m)
+plot(m[[1]])
+hold on;
+help(??holdon)
+plot(set[[1]])
+plot3d(savedX, savedY, savedZ)
+plot3d(xVector, yVector, vectorOfDistances)
+sample(2)
+sample(40)
+a <- 1:20
+a
+sample(a)
+a <- matrix(1:20, 10)
+a
+sample(a)
+indices <- sample(10)
+indices
+convA <- matrix(1:20,10)
+convA
+for (n in 1:10) {}
+for (n in 1:10) {convA(n) <- a(indices(n))}
+a(1)
+a[1]
+for (n in 1:10) {convA[n] <- a[indices[n]]}
+convA
+for (n in 1:10) {convA[n] <- a[indices[n]]}
+a <- matrix(1:20, 10)#
+convA <- matrix(1:20, 10)#
+#
+for (n in 1:10) {#
+convA[n,1] <- a[indices[n],1]#
+convA[n,2] <- a[indices[n],2]#
+}
+a
+convA
+version
+library(rgl)
+#Bryce Derriso#
+#2/18/2015#
+#
+#makes 10 matrices with 50 random points each and returns them in a list#
+baseMatrices <- function(number=10, points=50){#
+a <- list()#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}#
+#
+#take a matrix x and perturb it, making n perturbed copies#
+perturb <- function(x, n=9,magnitude=100){#
+points <- length(x)/2 #assumes the matrix is 2xsome number of rows#
+a <- list(x)#
+#
+for(i in 1:n){#
+p <- matrix(rnorm(100)/magnitude, points)#
+a[[length(a)+1]] <- x+p#
+}#
+return(a)#
+}#
+#
+#takes a distance of each barcode in x from the barcode at index i#
+distance <- function(x, i){#
+a <- sapply(x, wasserstein, dimension=0, Diag2=x[[i]])#
+return(a)#
+}#
+#It was all function declarations until now#
+#Now we start to call functions and do TDA#
+maxdimensions=1; maxscale=5#
+m <- baseMatrices()#
+set <- sapply(m, perturb)#
+barcodes <- sapply(set,ripsDiag, maxdimensions, maxscale, library="GUDHI")#
+#
+A = matrix(ncol=100)#
+for(j in 1:length(barcodes)){B = distance(barcodes, j);A = rbind(A,B)}#
+#
+#Now make a 3D plot of the bottleneck distances (z-axis) with #
+#respect to the 2D coordinates <diag1, diag2>#
+#We expect to see clusters of 10 points that have low distances#
+#along the diagonal, and the rest to be very large distances#
+#generate a z-vector#
+actual <- A[2:101, 1:100]#
+vectorOfDistances <- as.vector(actual)#
+#
+#Just 100 1's, then 100 2's, etc up to 100 100's#
+xVector <- rep(1:100, each=100)#
+#
+#Just 1:100 repeated 100 times #
+yVector <- rep(1:100, 100)#
+#
+plot3d(xVector, yVector, vectorOfDistances)
+#Bryce Derriso#
+#2/18/2015#
+#
+library(TDA)#
+#
+#makes 10 matrices with 50 random points each and returns them in a list#
+baseMatrices <- function(number=10, points=50){#
+a <- list()#
+for(n in 1:number){#
+m <- matrix(rnorm(100), points)#
+a[[length(a)+1]] <- m#
+}#
+return(a)#
+}#
+#
+#take a matrix x and perturb it, making n perturbed copies#
+perturb <- function(x, n=9,magnitude=100){#
+points <- length(x)/2 #assumes the matrix is 2xsome number of rows#
+a <- list(x)#
+#
+for(i in 1:n){#
+p <- matrix(rnorm(100)/magnitude, points)#
+a[[length(a)+1]] <- x+p#
+}#
+return(a)#
+}#
+#
+#takes a distance of each barcode in x from the barcode at index i#
+distance <- function(x, i){#
+a <- sapply(x, wasserstein, dimension=0, Diag2=x[[i]])#
+return(a)#
+}#
+#It was all function declarations until now#
+#Now we start to call functions and do TDA#
+maxdimensions=1; maxscale=5#
+m <- baseMatrices()#
+set <- sapply(m, perturb)#
+barcodes <- sapply(set,ripsDiag, maxdimensions, maxscale, library="GUDHI")#
+#
+A = matrix(ncol=100)#
+for(j in 1:length(barcodes)){B = distance(barcodes, j);A = rbind(A,B)}#
+#
+#Now make a 3D plot of the bottleneck distances (z-axis) with #
+#respect to the 2D coordinates <diag1, diag2>#
+#We expect to see clusters of 10 points that have low distances#
+#along the diagonal, and the rest to be very large distances#
+#generate a z-vector#
+actual <- A[2:101, 1:100]#
+vectorOfDistances <- as.vector(actual)#
+#
+#Just 100 1's, then 100 2's, etc up to 100 100's#
+xVector <- rep(1:100, each=100)#
+#
+#Just 1:100 repeated 100 times #
+yVector <- rep(1:100, 100)#
+#
+plot3d(xVector, yVector, vectorOfDistances)
+plot(xVector, vectorOfDistances)
+plot(yVector, vectorOfDistances)
+library("TDA")
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+featureMat <- lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)$diagram#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	return(featureVect)#
+})
+setwd("/Users/justinpayan/Desktop/Spring2015/TopoDataAnalysis/")
+list.files()
+setwd()
+setwd("testRScript/")
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+featureMat <- lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)$diagram#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	return(featureVect)#
+})
+currFile
+featureMat
+clear
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+featureMat <- lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)$diagram#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	return(featureVect)#
+})
+files
+files <- list.files()#
+featureMat <- matrix(rnorm(516*200), 516)#
+counter <- 1#
+#
+featureMat <- lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)$diagram#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	return(featureVect)#
+})
+featureMat[1,]
+featureMat[2,]
+featureMat[1]
+featureMat[2]
+featureMat[3]
+featureMat[4]
+featureMat[5]
+featureMat[6]
+plot(1:200,featureMat[1])
+plot(featureMat[1])
+files <- list.files()#
+counter <- 1#
+#
+featureMat <- lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)$diagram#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	return(featureVect)#
+})
+dim(featureMat)
+featureMat
+write.csv(featureMat,file="woot.csv")
+library(plyr)
+ldply(featureMat, function(t) t$toDataFrame())
+ldply(featureMat, function(t) t.toDataFrame())
+ldply(featureMat, function(t) toDataFrame(t))
+ldply(featureMat, toDataFrame())
+df <- data.frame(matrix(unlist(featureMat), nrow=132, byrow=T))
+df <- data.frame(matrix(unlist(featureMat), nrow=4, byrow=T))
+df
+write.csv(df, file="woah.csv")
+setwd("..")
+setwd("outputData")
+files <- list.files()#
+counter <- 1#
+#
+featureMat <- lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)$diagram#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] > (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] > (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	return(featureVect)#
+})
+featureMat
+df <- data.frame(matrix(unlist(featureMat), nrow=516, byrow=T))
+df
+write.csv(df, file="homData.csv")
+5 >= 4
+5 >= 5
+5 >= 6
+files <- list.files()#
+counter <- 1#
+#
+featureMat <- lapply(files, function(x) {#
+#
+	currFile <- read.csv(x)#
+	diagram1 <- ripsDiag(currFile,1,1000)$diagram#
+	featureVect <- rnorm(200)#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 0) {#
+				if (diagram1[k,3] >= (10*j-1)+diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j] <- count#
+	}#
+#
+	for (j in 1:100) {#
+		count <- 0#
+#
+		for (k in 1:dim(diagram1)[1]) {#
+			if (diagram1[k,1] == 1) {#
+				if (diagram1[k,3] >= (10*j-1) + diagram1[k,2]) {#
+					count <- count + 1#
+				}#
+			}#
+		}#
+#
+		featureVect[j+100] <- count#
+	}#
+#
+	featureVect <- featureVect/dim(diagram1)[1]#
+	return(featureVect)#
+})
+5 >= 6
+df <- data.frame(matrix(unlist(featureMat), nrow = 516, byrow = TRUE))
+df
+write.csv(df, file = "homdata.csv")
+files
+write.csv(files, file = "fileNames.csv")

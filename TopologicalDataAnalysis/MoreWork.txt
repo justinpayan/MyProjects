@@ -1,0 +1,13 @@
+ripsList <- list()
+
+maxDimensions=1; maxscale=5
+
+for (i in 1:10) {
+
+	m <- matrix(rnorm(100), 50)
+	ripsList <- c(ripsList, ripsDiag(m, maxdimensions, maxscale, library="GUDHI", printProgress=FALSE)$diagram)
+
+	for (j in 2:10) {
+		ripsList <- c(ripsList, ripsDiag(m + matrix(rnorm(100,0,.001),50), maxdimensions, maxscale, library="GUDHI", printProgress=FALSE)$diagram)
+	}
+}

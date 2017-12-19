@@ -1,0 +1,71 @@
+#Bryce Derriso
+#2/18/2015
+
+#makes 10 matrices with 50 random points each and returns them in a list
+baseMatrices <- function(number=10, points=50){
+a <- list()
+for(n in 1:number){
+m <- matrix(rnorm(100), points)
+a[[length(a)+1]] <- m
+}
+return(a)
+}
+
+#take a matrix x and perturb it, making n perturbed copies
+perturb <- function(x, n=9,magnitude=100){
+points <- length(x)/2 #assumes the matrix is 2xsome number of rows
+a <- list(x)
+
+for(i in 1:n){
+p <- matrix(rnorm(100)/magnitude, points)
+a[[length(a)+1]] <- x+p
+}
+return(a)
+}
+
+#takes a distance of each barcode in x from the barcode at index i
+distance <- function(x, i){
+a <- sapply(x, bottleneck, dimension=0, Diag2=x[[i]])
+return(a)
+}
+
+
+
+
+#It was all function declarations until now
+#Now we start to call functions and do TDA
+maxdimensions=1; maxscale=5
+m <- baseMatrices()
+set <- sapply(m, perturb)
+barcodes <- sapply(set,ripsDiag, maxdimensions, maxscale, library="GUDHI")
+
+A = matrix(ncol=100)
+for(j in 1:length(barcodes)){B = distance(barcodes, j);A = rbind(A,B)}
+
+
+
+#Now make a 3D plot of the bottleneck distances (z-axis) with 
+#respect to the 2D coordinates <diag1, diag2>
+#We expect to see clusters of 10 points that have low distances
+#along the diagonal, and the rest to be very large distances
+
+
+
+
+#generate a z-vector
+actual <- A[2:101, 1:100]
+vectorOfDistances <- as.vector(actual)
+
+#Just 100 1's, then 100 2's, etc up to 100 100's
+xVector <- rep(1:100, each=100)
+
+#Just 1:100 repeated 100 times 
+yVector <- rep(1:100, 100)
+
+plot3d(xVector, yVector, vectorOfDistances)
+
+
+#Perturb them a bit more
+#perturb by rotation
+
+

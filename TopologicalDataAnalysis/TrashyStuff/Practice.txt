@@ -1,0 +1,94 @@
+#R uses hashtag for comments
+
+matlist <- list()
+
+#to be used later in generating Rips Diagram
+maxdimensions=1; maxscale=5
+
+#generate ten point clouds that are very similar
+m <- matrix(rnorm(100), 50)
+
+matlist[[1]] <- m
+for (n in 2:10)
+{
+matlist[[n]] <- m + matrix(rnorm(100,0,.001),50)
+}
+
+m <- matrix(rnorm(100), 50)
+
+matlist[[11]] <- m
+for (n in 12:20)
+{
+matlist[[n]] <- m + matrix(rnorm(100,0,.001),50)
+}
+
+m <- matrix(rnorm(100), 50)
+
+matlist[[21]] <- m
+for (n in 22:30)
+{
+matlist[[n]] <- m + matrix(rnorm(100,0,.001),50)
+}
+
+m <- matrix(rnorm(100), 50)
+
+matlist[[31]] <- m
+for (n in 32:40)
+{
+matlist[[n]] <- m + matrix(rnorm(100,0,.001),50)
+}
+
+m <- matrix(rnorm(100), 50)
+
+matlist[[41]] <- m
+for (n in 42:50)
+{
+matlist[[n]] <- m + matrix(rnorm(100,0,.001),50)
+}
+
+m <- matrix(rnorm(100), 50)
+
+matlist[[51]] <- m
+for (n in 52:60)
+{
+matlist[[n]] <- m + matrix(rnorm(100,0,.001),50)
+}
+
+m <- matrix(rnorm(100), 50)
+
+matlist[[61]] <- m
+for (n in 62:70)
+{
+matlist[[n]] <- m + matrix(rnorm(100,0,.001),50)
+}
+
+m <- matrix(rnorm(100), 50)
+
+matlist[[71]] <- m
+for (n in 72:80)
+{
+matlist[[n]] <- m + matrix(rnorm(100,0,.001),50)
+}
+
+m <- matrix(rnorm(100), 50)
+
+matlist[[81]] <- m
+for (n in 82:90)
+{
+matlist[[n]] <- m + matrix(rnorm(100,0,.001),50)
+}
+
+m <- matrix(rnorm(100), 50)
+
+matlist[[91]] <- m
+for (n in 92:100)
+{
+matlist[[n]] <- m + matrix(rnorm(100,0,.001),50)
+}
+
+#
+#
+# Now we have a list of 100 point clouds. 
+#
+#
+

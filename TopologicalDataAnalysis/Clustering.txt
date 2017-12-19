@@ -1,0 +1,15 @@
+a <- matrix(1:20, 10)
+convA <- matrix(1:20, 10)
+
+for (n in 1:10) {
+convA[n,1] <- a[indices[n],1]
+convA[n,2] <- a[indices[n],2]
+}
+
+#presumably we know how many people we've scanned
+#So we know how many clusters to look for
+#par(new=TRUE) ... type in between all the plots to keep them
+
+If we determine clusters in the distance graph we can go back and say that those
+clusters were actually saying xCoordinate's barcode is similar to yCoordinate's barcode.
+So really we want to determine clusters based on x and z points or based on y and z points.
